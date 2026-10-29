@@ -1036,3 +1036,9 @@ img, video {
         display: none !important;
     }
 }
+@media (max-width: 900px) {
+    /* Отменяем фиксированную высоту для половинок сетки на мобилках, чтобы фото не обрезались */
+    .case-grid-2 .case-media-box.half {
+        height: auto !important;
+    }
+}
