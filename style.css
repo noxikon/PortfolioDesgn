@@ -1209,3 +1209,64 @@ img, video {
         line-height: 1.1 !important;
     }
 }
+/* ================= ФИНАЛЬНЫЙ ФИКС МОБИЛЬНОЙ ВЕРСТКИ (КЕЙСЫ И КАРТИНКИ) ================= */
+@media (max-width: 900px) {
+    /* 1. Жестко убираем обрезку картинок под шапкой на всех страницах кейсов */
+    body {
+        padding-top: 64px !important;
+    }
+
+    .case-page {
+        padding-top: 0 !important;
+    }
+
+    /* Гарантируем, что обложки кейсов не залезают под шапку */
+    .case-hero-utro,
+    .case-hero-coffee,
+    .case-hero-book,
+    .case-hero-most,
+    .case-hero-chips,
+    .case-hero-vano {
+        margin-top: 0 !important;
+        height: calc(100svh - 64px) !important;
+    }
+
+    /* Первые медиа-блоки внутри галереи тоже опускаем ниже */
+    .case-gallery {
+        padding-top: 0 !important;
+    }
+
+    /* 2. ПРИЖИМАЕМ НАЗВАНИЕ «DESERVE.» К ПРЕВЬЮ НА МОБИЛКАХ */
+    .next-project-section {
+        padding: 20px 0 32px !important;
+    }
+
+    .next-project-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+    }
+
+    .next-project-heading {
+        font-size: 22px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .next-card {
+        width: 100% !important;
+    }
+
+    .next-card__img-wrap {
+        height: 220px !important;
+        margin-bottom: 2px !important; /* Убираем промежуток между картинкой и текстом */
+    }
+
+    .next-card__title {
+        display: block !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        font-size: 20px !important;
+        line-height: 1.1 !important;
+    }
+}
