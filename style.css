@@ -155,7 +155,7 @@ img, video {
     position: relative;
     width: 100%;
     height: 100vh;
-    height: 100svh; /* Фиксирует высоту на мобилках, чтобы видео не увеличивалось при скролле */
+    height: 100svh;
     background-color: var(--card-placeholder);
     overflow: hidden;
     display: flex;
@@ -188,7 +188,7 @@ img, video {
     z-index: 2;
     text-align: center;
     max-width: 90%;
-    padding: 98px 20px 0 20px; /* Компенсация высоты шапки для точного центра */
+    padding: 98px 20px 0 20px;
     margin: 0 auto;
 }
 
@@ -210,7 +210,7 @@ img, video {
     line-height: 0.92;
     color: var(--text-white);
     margin-bottom: 20px;
-    white-space: nowrap; /* Всегда в одну строку */
+    white-space: nowrap;
     opacity: 0;
     animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
 }
@@ -415,7 +415,6 @@ img, video {
     margin: 0;
 }
 
-/* Выравнивание текстовых вставок внутри галереи (вместо пустых ячеек) */
 .case-text-right {
     margin-left: auto;
 }
@@ -451,14 +450,12 @@ img, video {
         height: 720px;
     }
 
-        /* Текстовая ячейка рядом с фото (например, в Книге) */
         .case-grid-2 .case-media-box.half.case-text-box {
             height: auto;
             display: flex;
             align-items: center;
         }
 
-/* Финальная обложка книги полностью видна без обрезки */
 .case-media-box.book-cover-final {
     height: 620px !important;
     display: flex;
@@ -474,16 +471,17 @@ img, video {
         max-height: 100%;
     }
 
-/* ================= СЛЕДУЮЩИЙ ПРОЕКТ ================= */
+/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ЧЕТКАЯ СЕТКА ДЕСКТОП) ================= */
 .next-project-section {
     padding: 56px 0 80px;
 }
 
 .next-project-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 48px;
+    display: grid;
+    grid-template-columns: 440px 1fr;
+    gap: 64px;
+    align-items: start;
+    width: 100%;
 }
 
 .next-project-heading {
@@ -493,12 +491,12 @@ img, video {
     line-height: 1.05;
     letter-spacing: -0.05em;
     color: #FFFFFF;
+    margin: 0;
 }
 
 .next-card {
     display: block;
-    width: 704px;
-    max-width: 100%;
+    width: 100%;
 }
 
 .next-card__img-wrap {
@@ -506,7 +504,7 @@ img, video {
     height: 422px;
     background-color: var(--card-placeholder);
     overflow: hidden;
-    margin-bottom: 8px; /* Подтянули название следующего кейса выше к картинке */
+    margin-bottom: 6px !important;
 }
 
 .next-card__img {
@@ -522,6 +520,8 @@ img, video {
     font-size: 36px;
     line-height: 1.1;
     color: #FFFFFF;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* ================= ФУТЕР ================= */
@@ -657,12 +657,13 @@ img, video {
         height: 480px;
     }
 
-    .next-project-heading {
-        font-size: 40px;
+    .next-project-grid {
+        grid-template-columns: 280px 1fr;
+        gap: 32px;
     }
 
-    .next-card {
-        width: 55%;
+    .next-project-heading {
+        font-size: 40px;
     }
 
     .next-card__img-wrap {
@@ -693,13 +694,8 @@ img, video {
     }
 }
 
-/* ================= BREAKPOINT: 768px (Планшеты и мобильные) ================= */
+/* ================= BREAKPOINT: Планшеты и Мобильные (до 900px) ================= */
 @media (max-width: 900px) {
-    /* Отступ сверху у страницы, чтобы фиксированная шапка (64px) ничего не перекрывала */
-    main {
-        padding-top: 64px;
-    }
-
     .container,
     .case-desc-section {
         padding-left: 24px;
@@ -834,6 +830,7 @@ img, video {
         gap: 24px;
     }
 
+    /* Отодвигаем верхний экран кейсов под шапку 64px, чтобы картинки не обрезались */
     .hero,
     .case-hero-utro,
     .case-hero-coffee,
@@ -841,138 +838,13 @@ img, video {
     .case-hero-most,
     .case-hero-chips,
     .case-hero-vano {
-        height: calc(100vh - 64px);
-        height: calc(100svh - 64px); /* Не прыгает при скролле на телефоне */
+        margin-top: 64px !important;
+        height: calc(100svh - 64px) !important;
     }
 
     .hero__content {
         padding: 0 16px;
         width: 100%;
-    }
-
-    .about {
-        grid-template-columns: 230px 1fr;
-        gap: 28px;
-    }
-
-    .about__photo-wrap {
-        width: 230px;
-        height: 270px;
-    }
-
-    .about__heading {
-        font-size: 24px;
-        line-height: 28px;
-        min-height: 112px;
-    }
-
-    .about__desc {
-        font-size: 15px;
-        line-height: 20px;
-    }
-
-    .works {
-        margin-top: 64px;
-        padding-bottom: 64px;
-    }
-
-    .works__section-title {
-        font-size: 24px;
-        line-height: 28px;
-    }
-
-    .work-card--full .work-card__img-wrap {
-        height: 400px;
-    }
-
-    .work-card--half .work-card__img-wrap {
-        height: 210px;
-    }
-
-    .work-card__title {
-        font-size: 22px;
-        line-height: 24px;
-    }
-
-    /* Скрываем описание карточек на планшетах и мобильных */
-    .work-card__desc {
-        display: none;
-    }
-
-    .case-desc-title {
-        width: 220px;
-        font-size: 32px;
-    }
-
-    .case-desc-text {
-        font-size: 15px;
-        line-height: 20px;
-    }
-
-    .case-grid-2 .case-media-box.half {
-        height: 360px;
-    }
-
-    .footer__heading {
-        font-size: 38px;
-        line-height: 44px;
-        letter-spacing: -1.8px;
-    }
-
-    .footer__email {
-        font-size: 20px;
-    }
-}
-
-/* ================= BREAKPOINT: Mobile (Смартфоны) ================= */
-@media (max-width: 640px) {
-    .container,
-    .case-desc-section {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .header {
-        height: 64px;
-    }
-
-    .mobile-menu {
-        height: 100vh;
-        height: 100dvh;
-        padding: 20px 16px;
-        transform: translateX(100%);
-    }
-
-        .mobile-menu.is-open {
-            transform: translateX(0);
-        }
-
-    .mobile-menu__body {
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 32px;
-    }
-
-    .hero,
-    .case-hero-utro,
-    .case-hero-coffee,
-    .case-hero-book,
-    .case-hero-most,
-    .case-hero-chips,
-    .case-hero-vano {
-        height: calc(100svh - 64px);
-        min-height: 420px;
-    }
-
-    .hero__title {
-        font-size: clamp(22px, 8.2vw, 36px); /* Гарантированно в одну строку на любом экране */
-        white-space: nowrap;
-        margin-bottom: 12px;
-    }
-
-    .hero__services {
-        font-size: 15px;
-        line-height: 1.25;
     }
 
     .about {
@@ -1042,6 +914,11 @@ img, video {
         line-height: 18px;
     }
 
+    /* Скрываем описание карточек на мобилках */
+    .work-card__desc {
+        display: none;
+    }
+
     .case-desc-section {
         padding-top: 32px;
         padding-bottom: 24px;
@@ -1058,8 +935,12 @@ img, video {
         line-height: 32px;
     }
 
+    /* Выравниваем текст по левому краю на мобилках */
+    .case-text-right,
     .case-desc-text {
-        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
         font-size: 14px;
         line-height: 19px;
     }
@@ -1086,32 +967,33 @@ img, video {
         height: 340px !important;
     }
 
+    /* Блок следующего проекта на мобилках */
     .next-project-section {
         padding: 28px 0 40px;
     }
 
     .next-project-grid {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
     }
 
     .next-project-heading {
-        font-size: 26px;
+        font-size: 26px !important;
+        margin-bottom: 0 !important;
     }
 
     .next-card {
-        width: 100%;
+        width: 100% !important;
     }
 
     .next-card__img-wrap {
-        height: 220px;
-        margin-bottom: 6px; /* Название кейса стоит плотно к превью */
+        height: 220px !important;
+        margin-bottom: 6px !important;
     }
 
     .next-card__title {
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 20px !important;
+        line-height: 24px !important;
     }
 
     .footer {
@@ -1144,129 +1026,5 @@ img, video {
     .footer__social-link {
         font-size: 14px;
         line-height: 20px;
-    }
-}
-/* ================= ИСПРАВЛЕНИЯ МОБИЛЬНОЙ ВЕРСТКИ ================= */
-
-/* ================= ФИНАЛЬНЫЙ ФИКС МОБИЛЬНОЙ ВЕРСТКИ ================= */
-@media (max-width: 900px) {
-    /* 1. Жестко отодвигаем весь контент от фиксированной шапки, чтобы картинки не обрезались */
-    body {
-        padding-top: 64px !important;
-    }
-
-    .case-page {
-        padding-top: 0 !important;
-    }
-
-    .hero,
-    .case-hero-utro,
-    .case-hero-coffee,
-    .case-hero-book,
-    .case-hero-most,
-    .case-hero-chips,
-    .case-hero-vano {
-        margin-top: 0 !important;
-        height: calc(100svh - 64px);
-    }
-
-    /* 2. Выравниваем весь текст строго по левому краю */
-    .case-text-right,
-    .case-desc-text {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        width: 100% !important;
-    }
-
-    /* 3. ИДЕАЛЬНОЕ СХОЖДЕНИЕ ДЛЯ СЛЕДУЮЩЕГО ПРОЕКТА */
-    .next-project-section {
-        padding: 24px 0 40px !important;
-    }
-
-    .next-project-grid {
-        display: block !important; /* Убираем flex, чтобы элементы шли строго друг за другом */
-    }
-
-    .next-project-heading {
-        font-size: 24px !important;
-        margin-bottom: 12px !important; /* Небольшой отступ под заголовком «Следующий проект» */
-    }
-
-    .next-card {
-        width: 100% !important;
-    }
-
-    .next-card__img-wrap {
-        height: 220px !important;
-        margin-bottom: 4px !important; /* Картинка стоит вплотную к названию */
-    }
-
-    .next-card__title {
-        display: block !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-        font-size: 20px !important;
-        line-height: 1.1 !important;
-    }
-}
-/* ================= ФИНАЛЬНЫЙ ФИКС МОБИЛЬНОЙ ВЕРСТКИ (КЕЙСЫ И КАРТИНКИ) ================= */
-@media (max-width: 900px) {
-    /* 1. Жестко убираем обрезку картинок под шапкой на всех страницах кейсов */
-    body {
-        padding-top: 64px !important;
-    }
-
-    .case-page {
-        padding-top: 0 !important;
-    }
-
-    /* Гарантируем, что обложки кейсов не залезают под шапку */
-    .case-hero-utro,
-    .case-hero-coffee,
-    .case-hero-book,
-    .case-hero-most,
-    .case-hero-chips,
-    .case-hero-vano {
-        margin-top: 0 !important;
-        height: calc(100svh - 64px) !important;
-    }
-
-    /* Первые медиа-блоки внутри галереи тоже опускаем ниже */
-    .case-gallery {
-        padding-top: 0 !important;
-    }
-
-    /* 2. ПРИЖИМАЕМ НАЗВАНИЕ «DESERVE.» К ПРЕВЬЮ НА МОБИЛКАХ */
-    .next-project-section {
-        padding: 20px 0 32px !important;
-    }
-
-    .next-project-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 6px !important;
-    }
-
-    .next-project-heading {
-        font-size: 22px !important;
-        margin-bottom: 4px !important;
-    }
-
-    .next-card {
-        width: 100% !important;
-    }
-
-    .next-card__img-wrap {
-        height: 220px !important;
-        margin-bottom: 2px !important; /* Убираем промежуток между картинкой и текстом */
-    }
-
-    .next-card__title {
-        display: block !important;
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-        font-size: 20px !important;
-        line-height: 1.1 !important;
     }
 }
