@@ -1146,3 +1146,12 @@ img, video {
         line-height: 20px;
     }
 }
+/* Выравниваем текст по левому краю на мобильных устройствах */
+@media (max-width: 900px) {
+    .case-text-right,
+    .case-desc-text {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+}
