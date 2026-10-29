@@ -1164,3 +1164,18 @@ img, video {
     margin-top: 0 !important;
     line-height: 1.1 !important;
 }
+/* 1. Плотная привязка названия следующего проекта к картинке на мобилках */
+@media (max-width: 900px) {
+    .next-card__img-wrap {
+        margin-bottom: 6px !important;
+    }
+
+    .next-card__title {
+        margin-top: 0 !important;
+    }
+
+    /* 2. Отодвигаем содержимое страниц кейсов под фиксированную шапку, чтобы картинки не обрезались */
+    .case-page {
+        padding-top: 64px !important;
+    }
+}
