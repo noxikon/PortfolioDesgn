@@ -1034,3 +1034,9 @@ img, video {
         display: none !important;
     }
 }
+@media (max-width: 900px) {
+    /* Скрываем правые теги с категориями и годами на главной для мобилок */
+    .work-card__tag {
+        display: none !important;
+    }
+}
