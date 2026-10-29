@@ -155,13 +155,13 @@ img, video {
     position: relative;
     width: 100%;
     height: 100vh;
-    height: 100dvh; /* Гарантированно на всю высоту экрана мобильных и ПК */
+    height: 100svh; /* Фиксирует высоту на мобилках, чтобы видео не увеличивалось при скролле */
     background-color: var(--card-placeholder);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0; /* Убираем любые возможные отступы */
+    margin-top: 0;
 }
 
 .hero__bg,
@@ -188,10 +188,10 @@ img, video {
     z-index: 2;
     text-align: center;
     max-width: 90%;
-    padding: 130px 20px 0 20px; /* Увеличили отступ сверху, чтобы опустить текст точно в визуальный центр */
+    padding: 98px 20px 0 20px; /* Компенсация высоты шапки для точного центра */
     margin: 0 auto;
 }
-/* Анимация появления Никита Шалухин на Hero */
+
 @keyframes heroFadeUp {
     0% {
         opacity: 0;
@@ -209,7 +209,8 @@ img, video {
     font-size: clamp(36px, 5.5vw, 80px);
     line-height: 0.92;
     color: var(--text-white);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    white-space: nowrap; /* Всегда в одну строку */
     opacity: 0;
     animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
 }
@@ -319,7 +320,7 @@ img, video {
     width: 100%;
     background-color: var(--card-placeholder);
     overflow: hidden;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     position: relative;
     transition: transform 0.4s ease;
 }
@@ -405,12 +406,18 @@ img, video {
 
 .case-desc-text {
     width: 704px;
+    max-width: 100%;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
     color: #C0C0C0;
     margin: 0;
+}
+
+/* Выравнивание текстовых вставок внутри галереи (вместо пустых ячеек) */
+.case-text-right {
+    margin-left: auto;
 }
 
 .case-gallery {
@@ -444,7 +451,14 @@ img, video {
         height: 720px;
     }
 
-/* Финальная обложка книги полностью видна без обрезки (Пункт 8) */
+        /* Текстовая ячейка рядом с фото (например, в Книге) */
+        .case-grid-2 .case-media-box.half.case-text-box {
+            height: auto;
+            display: flex;
+            align-items: center;
+        }
+
+/* Финальная обложка книги полностью видна без обрезки */
 .case-media-box.book-cover-final {
     height: 620px !important;
     display: flex;
@@ -492,7 +506,7 @@ img, video {
     height: 422px;
     background-color: var(--card-placeholder);
     overflow: hidden;
-    margin-bottom: 14px;
+    margin-bottom: 8px; /* Подтянули название следующего кейса выше к картинке */
 }
 
 .next-card__img {
@@ -502,10 +516,11 @@ img, video {
 }
 
 .next-card__title {
+    display: block;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
     font-size: 36px;
-    line-height: 34px;
+    line-height: 1.1;
     color: #FFFFFF;
 }
 
@@ -678,8 +693,13 @@ img, video {
     }
 }
 
-/* ================= BREAKPOINT: 768px ================= */
+/* ================= BREAKPOINT: 768px (Планшеты и мобильные) ================= */
 @media (max-width: 900px) {
+    /* Отступ сверху у страницы, чтобы фиксированная шапка (64px) ничего не перекрывала */
+    main {
+        padding-top: 64px;
+    }
+
     .container,
     .case-desc-section {
         padding-left: 24px;
@@ -814,6 +834,22 @@ img, video {
         gap: 24px;
     }
 
+    .hero,
+    .case-hero-utro,
+    .case-hero-coffee,
+    .case-hero-book,
+    .case-hero-most,
+    .case-hero-chips,
+    .case-hero-vano {
+        height: calc(100vh - 64px);
+        height: calc(100svh - 64px); /* Не прыгает при скролле на телефоне */
+    }
+
+    .hero__content {
+        padding: 0 16px;
+        width: 100%;
+    }
+
     .about {
         grid-template-columns: 230px 1fr;
         gap: 28px;
@@ -858,6 +894,11 @@ img, video {
         line-height: 24px;
     }
 
+    /* Скрываем описание карточек на планшетах и мобильных */
+    .work-card__desc {
+        display: none;
+    }
+
     .case-desc-title {
         width: 220px;
         font-size: 32px;
@@ -883,7 +924,7 @@ img, video {
     }
 }
 
-/* ================= BREAKPOINT: Mobile ================= */
+/* ================= BREAKPOINT: Mobile (Смартфоны) ================= */
 @media (max-width: 640px) {
     .container,
     .case-desc-section {
@@ -919,7 +960,19 @@ img, video {
     .case-hero-most,
     .case-hero-chips,
     .case-hero-vano {
-        min-height: 460px;
+        height: calc(100svh - 64px);
+        min-height: 420px;
+    }
+
+    .hero__title {
+        font-size: clamp(22px, 8.2vw, 36px); /* Гарантированно в одну строку на любом экране */
+        white-space: nowrap;
+        margin-bottom: 12px;
+    }
+
+    .hero__services {
+        font-size: 15px;
+        line-height: 1.25;
     }
 
     .about {
@@ -972,6 +1025,11 @@ img, video {
     .work-card--full .work-card__img-wrap,
     .work-card--half .work-card__img-wrap {
         height: 220px;
+        margin-bottom: 8px;
+    }
+
+    .work-card__meta {
+        margin-bottom: 0;
     }
 
     .work-card__title {
@@ -979,14 +1037,14 @@ img, video {
         line-height: 22px;
     }
 
-    .work-card__desc {
-        font-size: 14px;
+    .work-card__tag {
+        font-size: 13px;
         line-height: 18px;
     }
 
     .case-desc-section {
-        padding-top: 40px;
-        padding-bottom: 32px;
+        padding-top: 32px;
+        padding-bottom: 24px;
     }
 
     .case-desc-grid {
@@ -1020,18 +1078,22 @@ img, video {
             height: 300px;
         }
 
+            .case-grid-2 .case-media-box.half.case-text-box {
+                height: auto;
+            }
+
     .case-media-box.book-cover-final {
         height: 340px !important;
     }
 
     .next-project-section {
-        padding: 36px 0 48px;
+        padding: 28px 0 40px;
     }
 
     .next-project-grid {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 16px;
     }
 
     .next-project-heading {
@@ -1044,10 +1106,12 @@ img, video {
 
     .next-card__img-wrap {
         height: 220px;
+        margin-bottom: 6px; /* Название кейса стоит плотно к превью */
     }
 
     .next-card__title {
         font-size: 20px;
+        line-height: 24px;
     }
 
     .footer {
@@ -1080,11 +1144,5 @@ img, video {
     .footer__social-link {
         font-size: 14px;
         line-height: 20px;
-    }
-}
-/* Скрываем описание карточек на мобильных устройствах */
-@media (max-width: 768px) {
-    .work-card__desc {
-        display: none;
     }
 }
