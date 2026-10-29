@@ -1042,3 +1042,42 @@ img, video {
         height: auto !important;
     }
 }
+@media (max-width: 900px) {
+    /* Фиксируем адекватную высоту первого экрана кейса, чтобы логотип не гигантился */
+    .case-hero-utro,
+    .case-hero-coffee,
+    .case-hero-book,
+    .case-hero-most,
+    .case-hero-chips,
+    .case-hero-vano,
+    .hero {
+        height: 380px !important; /* Делаем аккуратный компактный баннер вместо 100vh */
+        min-height: unset !important;
+    }
+
+    /* Чтобы видео/картинка внутри не обрезались диким зумом */
+    .hero__video,
+    .case-hero-bg {
+        object-fit: cover !important;
+    }
+}
+@media (max-width: 900px) {
+    /* Фиксируем адекватную высоту главной hero-секции на мобилках */
+    .hero {
+        height: 380px !important;
+        min-height: unset !important;
+        margin-top: 64px !important; /* Отступаем под фиксированную шапку */
+    }
+
+    /* Уменьшаем размер главного заголовка на главной, чтобы он не обрезался по бокам */
+    .hero__title {
+        font-size: clamp(24px, 7vw, 36px) !important;
+        white-space: nowrap !important;
+        margin-bottom: 8px !important;
+    }
+
+    .hero__services {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+    }
+}
