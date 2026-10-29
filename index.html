@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никита Шалухин — Портфолио дизайнера</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#top" class="header__brand">НИКИТА ШАЛУХИН</a>
+
+            <nav class="header__nav" aria-label="Основная навигация">
+                <a href="#works" class="header__link">РАБОТЫ</a>
+                <a href="#about" class="header__link">ОБО МНЕ</a>
+                <a href="#contacts" class="header__link">КОНТАКТЫ</a>
+            </nav>
+
+            <div class="header__actions">
+                <a href="https://disk.yandex.ru/d/ulKu1YBw95Kz-w" target="_blank" rel="noopener" class="header__cta-link">СКАЧАТЬ CV</a>
+                <a href="https://t.me/Mug_depr" target="_blank" rel="noopener" class="header__cta-btn">СВЯЗАТЬСЯ</a>
+            </div>
+
+            <!-- Кнопка бургер-меню -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
+                <span class="burger-btn__icon"></span>
+            </button>
+        </div>
+
+        <!-- Выпадающее / Выезжающее меню для планшетов и мобильных -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <div class="mobile-menu__top">
+                <a href="#top" class="header__brand">НИКИТА ШАЛУХИН</a>
+                <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Закрыть меню"></button>
+            </div>
+            <div class="mobile-menu__body">
+                <nav class="mobile-menu__nav">
+                    <a href="#works" class="mobile-menu__link">РАБОТЫ</a>
+                    <a href="#about" class="mobile-menu__link">ОБО МНЕ</a>
+                    <a href="#contacts" class="mobile-menu__link">КОНТАКТЫ</a>
+                </nav>
+                <div class="mobile-menu__actions">
+                    <a href="https://disk.yandex.ru/" target="_blank" rel="noopener" class="header__cta-link">СКАЧАТЬ CV</a>
+                    <a href="https://t.me/Mug_depr" target="_blank" rel="noopener" class="header__cta-btn">СВЯЗАТЬСЯ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Hero-секция -->
+        <section class="hero">
+            <video class="hero__video" autoplay muted loop playsinline>
+                <source src="assets/hero/Comp.mp4" type="video/mp4">
+            </video>
+            <div class="container hero__content">
+                <h1 class="hero__title">НИКИТА ШАЛУХИН</h1>
+                <p class="hero__services">Айдентика, упаковка, плакаты и визуальные системы</p>
+            </div>
+        </section>
+
+        <!-- Блок «Обо мне» с анимацией печатной машинки -->
+        <section class="about container" id="about">
+            <div class="about__photo-wrap">
+                <img src="assets/about/длясайта.jpg" alt="Никита Шалухин" class="about__photo">
+            </div>
+            <div class="about__text">
+                <h2 class="about__heading" id="typewriterText" data-text="Привет, я Никита!&#10;Создаю визуальные системы, где идеи приобретают форму и узнаваемость.">
+                    <span class="typewriter__content"></span><span class="typewriter__caret"></span>
+                </h2>
+                <p class="about__desc">
+                    Работаю с айдентикой, упаковкой, плакатами, афишами и вёрсткой. За время работы успел поработать с ресторанными брендами, музеем и образовательными проектами. Также участвовал в KIAN Summer School. Благодаря полученному опыту умею работать как над отдельными задачами внутри бренда, так и развивать целостные системы от концепции до финала.
+                </p>
+            </div>
+        </section>
+
+        <!-- Секция «Избранные работы» -->
+        <section class="works container" id="works">
+            <h2 class="works__section-title">Избранные работы</h2>
+
+            <div class="works__list">
+                <!-- 1. Утро тут (Full width) -->
+                <article class="work-card work-card--full">
+                    <a href="case-utro.html" class="work-card__link">
+                        <div class="work-card__img-wrap">
+                            <video class="work-card__video" autoplay muted loop playsinline>
+                                <source src="assets/cases/utro/Utrolog.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="work-card__meta">
+                            <h3 class="work-card__title">Утро тут</h3>
+                            <span class="work-card__tag">Айдентика / 2026</span>
+                        </div>
+                        <p class="work-card__desc">
+                            Концепт айдентики для сервиса по доставке еды. Разработал айдентику, создал визуальную систему и экраны мобильного приложения.
+                        </p>
+                    </a>
+                </article>
+
+                <!-- 2-3. Две карточки в ряд: Deserve. и Covid-19: мир на паузе -->
+                <div class="works__row-2col">
+                    <article class="work-card work-card--half">
+                        <a href="case-coffee.html" class="work-card__link">
+                            <div class="work-card__img-wrap">
+                                <img src="assets/cases/coffee/интро.jpg" alt="Deserve." class="work-card__img">
+                            </div>
+                            <div class="work-card__meta">
+                                <h3 class="work-card__title">Deserve.</h3>
+                                <span class="work-card__tag">упаковка / 2025</span>
+                            </div>
+                            <p class="work-card__desc">
+                                Концепт упаковки дрип-кофе. Серия упаковки, которая помогает различать вкусы и уровень кофеина.
+                            </p>
+                        </a>
+                    </article>
+
+                    <article class="work-card work-card--half">
+                        <a href="case-book.html" class="work-card__link">
+                            <div class="work-card__img-wrap">
+                                <img src="assets/cases/book/Mask group.png" alt="Covid-19: мир на паузе" class="work-card__img">
+                            </div>
+                            <div class="work-card__meta">
+                                <h3 class="work-card__title">Covid-19: мир на паузе</h3>
+                                <span class="work-card__tag">верстка / 2025</span>
+                            </div>
+                            <p class="work-card__desc">
+                                Совместный проект по оформлению книги о пандемии COVID-19. Создали экспериментальную вёрстку, в которой типографика и композиция передают эмоциональное напряжение и развитие событий.
+                            </p>
+                        </a>
+                    </article>
+                </div>
+
+                <!-- 4. Мост (Full width) -->
+                <article class="work-card work-card--full">
+                    <a href="case-most.html" class="work-card__link">
+                        <div class="work-card__img-wrap">
+                            <video class="work-card__video" autoplay muted loop playsinline>
+                                <source src="assets/cases/most/LogMost.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="work-card__meta">
+                            <h3 class="work-card__title">Мост</h3>
+                            <span class="work-card__tag">Айдентика / 2026</span>
+                        </div>
+                        <p class="work-card__desc">
+                            Концепт айдентики для мессенджера, объединяющего чаты и маркетплейс. Разработал визуальную систему бренда, а также рекламные материалы.
+                        </p>
+                    </a>
+                </article>
+
+                <!-- 5. Blue Chips (Full width) -->
+                <article class="work-card work-card--full">
+                    <a href="case-chips.html" class="work-card__link">
+                        <div class="work-card__img-wrap">
+                            <video class="work-card__video" autoplay muted loop playsinline>
+                                <source src="assets/cases/chips/ChipsLogo.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="work-card__meta">
+                            <h3 class="work-card__title">Blue Chips</h3>
+                            <span class="work-card__tag">упаковка / 2026</span>
+                        </div>
+                        <p class="work-card__desc">
+                            Концепт упаковки синих чипсов. Создал серию из трех разных вкусов.
+                        </p>
+                    </a>
+                </article>
+
+                <!-- 6. Дядя Вано (Full width) -->
+                <article class="work-card work-card--full">
+                    <a href="case-vano.html" class="work-card__link">
+                        <div class="work-card__img-wrap">
+                            <img src="assets/cases/vano/wttool-nano-banana-2-1-4k-823310f6-2b4b-495d-8862-d487963d493a.jpg" alt="Дядя Вано" class="work-card__img">
+                        </div>
+                        <div class="work-card__meta">
+                            <h3 class="work-card__title">Дядя Вано</h3>
+                            <span class="work-card__tag">АЙДЕНТИКА / 2026</span>
+                        </div>
+                        <p class="work-card__desc">
+                            Развитие существующей айдентики сети ресторанов грузинской кухни «Дядя Вано». Обновил маскота, систематизировал визуальный стиль и разработал рекламные материалы для разных форматов.
+                        </p>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer" id="contacts">
+        <div class="container footer__inner">
+            <h2 class="footer__heading">Есть задача?<br>давайте обсудим</h2>
+            <div class="footer__bottom">
+                <a href="mailto:Shalukhinworks@mail.ru" class="footer__email">Shalukhinworks@mail.ru</a>
+                <div class="footer__socials">
+                    <a href="https://t.me/Mug_depr" target="_blank" rel="noopener" class="footer__social-link">TELEGRAM</a>
+                    <a href="https://www.behance.net/b1f6076e" target="_blank" rel="noopener" class="footer__social-link">BEHANCE</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

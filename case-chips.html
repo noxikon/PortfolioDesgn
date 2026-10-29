@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Chips — Никита Шалухин</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="index.html" class="header__brand">НИКИТА ШАЛУХИН</a>
+
+            <nav class="header__nav" aria-label="Основная навигация">
+                <a href="index.html#works" class="header__link">РАБОТЫ</a>
+                <a href="index.html#about" class="header__link">ОБО МНЕ</a>
+                <a href="index.html#contacts" class="header__link">КОНТАКТЫ</a>
+            </nav>
+
+            <div class="header__actions">
+                <a href="https://disk.yandex.ru/" target="_blank" rel="noopener" class="header__cta-link">СКАЧАТЬ CV</a>
+                <a href="https://t.me/Mug_depr" target="_blank" rel="noopener" class="header__cta-btn">СВЯЗАТЬСЯ</a>
+            </div>
+
+            <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
+                <span class="burger-btn__icon"></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <div class="mobile-menu__top">
+                <a href="index.html" class="header__brand">НИКИТА ШАЛУХИН</a>
+                <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Закрыть меню"></button>
+            </div>
+            <div class="mobile-menu__body">
+                <nav class="mobile-menu__nav">
+                    <a href="index.html#works" class="mobile-menu__link">РАБОТЫ</a>
+                    <a href="index.html#about" class="mobile-menu__link">ОБО МНЕ</a>
+                    <a href="index.html#contacts" class="mobile-menu__link">КОНТАКТЫ</a>
+                </nav>
+                <div class="mobile-menu__actions">
+                    <a href="https://disk.yandex.ru/" target="_blank" rel="noopener" class="header__cta-link">СКАЧАТЬ CV</a>
+                    <a href="https://t.me/Mug_depr" target="_blank" rel="noopener" class="header__cta-btn">СВЯЗАТЬСЯ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="top" class="case-page">
+
+        <!-- Шапка кейса -->
+        <section class="case-hero-chips">
+            <video autoplay muted loop playsinline class="case-media-el">
+                <source src="assets/cases/chips/ChipsLogo.mp4" type="video/mp4">
+            </video>
+        </section>
+
+        <!-- Описание проекта -->
+        <section class="container case-desc-section">
+            <div class="case-desc-grid">
+                <h2 class="case-desc-title">Blue Chips</h2>
+                <p class="case-desc-text">
+                    Концепт айдентики и упаковки для бренда снеков «Blue Chips». Разработана яркая визуальная система, подчеркивающая натуральный состав, необычную форму продукта и молодежный характер бренда.
+                </p>
+            </div>
+        </section>
+
+        <!-- Галерея проекта Blue Chips -->
+        <div class="container case-gallery">
+
+            <div class="case-grid-2">
+                <div class="case-media-box half">
+                    <img src="assets/cases/chips/три упаковки.jpg" alt="Три упаковки чипсов" class="case-media-el">
+                </div>
+                <div class="case-media-box half">
+                    <img src="assets/cases/chips/blue_chips_barbecue_4344x5792 (1).jpg" alt="Барбекю" class="case-media-el">
+                </div>
+            </div>
+
+            <p class="case-desc-text" style="padding: 12px 0;">
+                Основой фирменной графики стал повторяющийся паттерн из треугольников. Его геометрия отсылает к форме самих чипсов, создавая прямую связь между продуктом и дизайном упаковки. Для каждого вкуса разработано собственное контрастное сочетание цветов. Палитра учитывает характер вкусовых добавок: оранжевый отсылает к копчёной паприке, красный — к барбекю. При этом единая композиция, типографика и геометрический паттерн сохраняют целостность всей продуктовой линейки.
+            </p>
+
+            <div class="case-grid-2">
+                <div class="case-media-box half">
+                    <img src="assets/cases/chips/blue_chips_paprika_4344x5792 (1).jpg" alt="Паприка" class="case-media-el">
+                </div>
+                <div class="case-media-box half" style="display: flex; align-items: center;">
+                    <img src="assets/cases/chips/magnific__enhance__90494.png" alt="Детали продукта" class="case-media-el">
+                </div>
+            </div>
+
+            <!-- Куча чипсов (широкий блок) -->
+            <div class="case-media-box full">
+                <img src="assets/cases/chips/куча.jpg" alt="Куча чипсов" class="case-media-el">
+            </div>
+
+            <!-- Блок перехода на следующий проект (Дядя Вано) -->
+            <section class="next-project-section">
+                <div class="next-project-grid">
+                    <h2 class="next-project-heading">Следующий проект</h2>
+                    <a href="case-vano.html" class="next-card">
+                        <div class="next-card__img-wrap">
+                            <img src="assets/cases/vano/wttool-nano-banana-2-1-4k-823310f6-2b4b-495d-8862-d487963d493a.jpg" alt="Дядя Вано" class="next-card__img">
+                        </div>
+                        <span class="next-card__title">Дядя Вано</span>
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer" id="contacts">
+        <div class="container footer__inner">
+            <h2 class="footer__heading">Есть задача?<br>давайте обсудим</h2>
+            <div class="footer__bottom">
+                <a href="mailto:Shalukhinworks@mail.ru" class="footer__email">Shalukhinworks@mail.ru</a>
+                <div class="footer__socials">
+                    <a href="https://t.me/ТВОЙ_НИК" target="_blank" rel="noopener" class="footer__social-link">TELEGRAM</a>
+                    <a href="https://www.behance.net/b1f6076e" target="_blank" rel="noopener" class="footer__social-link">BEHANCE</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
