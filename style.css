@@ -1155,3 +1155,12 @@ img, video {
         width: 100% !important;
     }
 }
+/* Прижимаем название следующего проекта ближе к картинке на всех экранах */
+.next-card__img-wrap {
+    margin-bottom: 6px !important;
+}
+
+.next-card__title {
+    margin-top: 0 !important;
+    line-height: 1.1 !important;
+}
