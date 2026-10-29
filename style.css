@@ -1148,10 +1148,15 @@ img, video {
 }
 /* ================= ИСПРАВЛЕНИЯ МОБИЛЬНОЙ ВЕРСТКИ ================= */
 
+/* ================= ФИНАЛЬНЫЙ ФИКС МОБИЛЬНОЙ ВЕРСТКИ ================= */
 @media (max-width: 900px) {
-    /* 1. Жестко отодвигаем шапку и весь контент кейсов, чтобы картинки не обрезались */
+    /* 1. Жестко отодвигаем весь контент от фиксированной шапки, чтобы картинки не обрезались */
     body {
-        padding-top: 64px;
+        padding-top: 64px !important;
+    }
+
+    .case-page {
+        padding-top: 0 !important;
     }
 
     .hero,
@@ -1165,7 +1170,7 @@ img, video {
         height: calc(100svh - 64px);
     }
 
-    /* 2. Выравниваем весь текст в кейсах строго по левому краю на мобилках */
+    /* 2. Выравниваем весь текст строго по левому краю */
     .case-text-right,
     .case-desc-text {
         margin-left: 0 !important;
@@ -1173,24 +1178,34 @@ img, video {
         width: 100% !important;
     }
 
-    /* 3. Прижимаем название следующего проекта ВПЛОТЬ к превью на мобилках */
+    /* 3. ИДЕАЛЬНОЕ СХОЖДЕНИЕ ДЛЯ СЛЕДУЮЩЕГО ПРОЕКТА */
     .next-project-section {
-        padding: 24px 0 32px !important;
+        padding: 24px 0 40px !important;
     }
 
     .next-project-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 8px !important; /* Минимальный отступ между заголовком «Следующий проект», картинкой и названием */
+        display: block !important; /* Убираем flex, чтобы элементы шли строго друг за другом */
+    }
+
+    .next-project-heading {
+        font-size: 24px !important;
+        margin-bottom: 12px !important; /* Небольшой отступ под заголовком «Следующий проект» */
+    }
+
+    .next-card {
+        width: 100% !important;
     }
 
     .next-card__img-wrap {
-        margin-bottom: 4px !important; /* Убираем гигантский промежуток перед текстом названия */
+        height: 220px !important;
+        margin-bottom: 4px !important; /* Картинка стоит вплотную к названию */
     }
 
     .next-card__title {
+        display: block !important;
         margin-top: 0 !important;
         padding-top: 0 !important;
+        font-size: 20px !important;
         line-height: 1.1 !important;
     }
 }
