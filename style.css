@@ -1028,3 +1028,9 @@ img, video {
         line-height: 20px;
     }
 }
+@media (max-width: 900px) {
+    /* Скрываем мета-теги (айдентика/год) под фото на главной для мобилок */
+    .work-card__meta {
+        display: none !important;
+    }
+}
