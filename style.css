@@ -1146,36 +1146,51 @@ img, video {
         line-height: 20px;
     }
 }
-/* Выравниваем текст по левому краю на мобильных устройствах */
+/* ================= ИСПРАВЛЕНИЯ МОБИЛЬНОЙ ВЕРСТКИ ================= */
+
 @media (max-width: 900px) {
+    /* 1. Жестко отодвигаем шапку и весь контент кейсов, чтобы картинки не обрезались */
+    body {
+        padding-top: 64px;
+    }
+
+    .hero,
+    .case-hero-utro,
+    .case-hero-coffee,
+    .case-hero-book,
+    .case-hero-most,
+    .case-hero-chips,
+    .case-hero-vano {
+        margin-top: 0 !important;
+        height: calc(100svh - 64px);
+    }
+
+    /* 2. Выравниваем весь текст в кейсах строго по левому краю на мобилках */
     .case-text-right,
     .case-desc-text {
         margin-left: 0 !important;
         margin-right: 0 !important;
         width: 100% !important;
     }
-}
-/* Прижимаем название следующего проекта ближе к картинке на всех экранах */
-.next-card__img-wrap {
-    margin-bottom: 6px !important;
-}
 
-.next-card__title {
-    margin-top: 0 !important;
-    line-height: 1.1 !important;
-}
-/* 1. Плотная привязка названия следующего проекта к картинке на мобилках */
-@media (max-width: 900px) {
+    /* 3. Прижимаем название следующего проекта ВПЛОТЬ к превью на мобилках */
+    .next-project-section {
+        padding: 24px 0 32px !important;
+    }
+
+    .next-project-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important; /* Минимальный отступ между заголовком «Следующий проект», картинкой и названием */
+    }
+
     .next-card__img-wrap {
-        margin-bottom: 6px !important;
+        margin-bottom: 4px !important; /* Убираем гигантский промежуток перед текстом названия */
     }
 
     .next-card__title {
         margin-top: 0 !important;
-    }
-
-    /* 2. Отодвигаем содержимое страниц кейсов под фиксированную шапку, чтобы картинки не обрезались */
-    .case-page {
-        padding-top: 64px !important;
+        padding-top: 0 !important;
+        line-height: 1.1 !important;
     }
 }
