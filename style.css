@@ -431,7 +431,6 @@ img, video {
     margin: 0;
 }
 
-/* Уменьшаем отступ под текстовыми блоками внутри галереи кейсов */
 .case-gallery .case-desc-text {
     margin: -10px 0 0 0 !important;
 }
@@ -502,7 +501,7 @@ img, video {
         max-height: 100%;
     }
 
-/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП) ================= */
+/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП: ГОРИЗОНТАЛЬНАЯ КАРТОЧКА ШИРИНОЙ 704px) ================= */
 .next-project-section {
     padding: 56px 0 80px;
 }
@@ -533,7 +532,7 @@ img, video {
 
 .next-card__img-wrap {
     width: 100%;
-    height: 528px;
+    height: 422px; /* Возвращаем горизонтальную пропорцию широкой карточки (как .work-card--half) */
     background-color: var(--card-placeholder);
     overflow: hidden;
     margin-bottom: 6px !important;
@@ -706,7 +705,7 @@ img, video {
     }
 
     .next-card__img-wrap {
-        height: 420px;
+        height: 290px; /* Горизонтальная пропорция для 1024px */
     }
 
     .footer {
@@ -979,7 +978,6 @@ img, video {
             height: auto;
         }
 
-    /* ИСПРАВЛЕНИЕ ДЛЯ ПЛАНШЕТОВ 768x1024: блок Следующий проект в 2 колонки с правильной вертикальной карточкой шириной 420px */
     .next-project-grid {
         grid-template-columns: 240px 420px !important;
         justify-content: space-between !important;
@@ -995,7 +993,7 @@ img, video {
     }
 
     .next-card__img-wrap {
-        height: 480px !important; /* Крупная вертикальная прямоугольная карточка */
+        height: 240px !important; /* Горизонтальная пропорция для планшетов */
     }
 
     .next-card__title {
@@ -1007,7 +1005,7 @@ img, video {
     }
 
     .footer__heading {
-        font-size: 52px !important; /* Увеличили текст в футере на планшетах до десктопного размера */
+        font-size: 52px !important;
         line-height: 1.05 !important;
         letter-spacing: -1.5px;
     }
