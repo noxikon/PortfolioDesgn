@@ -1,4 +1,4 @@
- :root {
+:root {
     --bg-main: #000000;
     --bg-page: #000000;
     --accent: #267DFF;
@@ -41,7 +41,7 @@ img, video {
 }
 
 /* Аппаратное ускорение для предотвращения крашей видео */
-.case-media-el, .work-cardvideo, .herovideo {
+.case-media-el, .work-card__video, .hero__video {
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
@@ -349,11 +349,11 @@ img, video {
     height: 422px;
 }
 
-.work-cardlink:hover .work-cardimg-wrap {
+.work-card__link:hover .work-card__img-wrap {
     transform: none;
 }
 
-.work-cardvideo, .work-cardimg {
+.work-card__video, .work-card__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -431,7 +431,6 @@ img, video {
     margin: 0;
 }
 
- /* Уменьшаем отступ под текстом в галерее */
 .case-gallery .case-desc-text {
     margin: -10px 0 0 0 !important;
 }
@@ -444,7 +443,7 @@ img, video {
     display: flex;
     flex-direction: column;
     gap: 28px;
-    padding-bottom: 40px; /* Уменьшено расстояние снизу до футера */
+    padding-bottom: 24px;
 }
 
 .case-media-box {
@@ -504,7 +503,7 @@ img, video {
 
 /* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП) ================= */
 .next-project-section {
-    padding: 24px 0 40px; /* Сделали минимальный отступ от последней картинки до футера */
+    padding: 16px 0 24px;
 }
 
 .next-project-grid {
@@ -533,7 +532,7 @@ img, video {
 
 .next-card__img-wrap {
     width: 100%;
-    height: 422px; /* Горизонтальная широкая карточка */
+    height: 422px; /* Широкая горизонтальная карточка */
     background-color: var(--card-placeholder);
     overflow: hidden;
     margin-bottom: 6px !important;
@@ -966,7 +965,7 @@ img, video {
 
     .case-gallery {
         gap: 20px;
-        padding-bottom: 30px;
+        padding-bottom: 20px;
     }
 
     .case-grid-2 {
@@ -979,7 +978,7 @@ img, video {
             height: auto;
         }
 
-    /* Точная сетка для планшетов 768x1024 под горизонтальную карточку шириной 420px */
+    /* Исправление сетки на планшетах 768x1024: блок Следующий проект в 2 колонки под горизонтальную карточку */
     .next-project-grid {
         grid-template-columns: 240px 420px !important;
         justify-content: space-between !important;
@@ -995,11 +994,15 @@ img, video {
     }
 
     .next-card__img-wrap {
-        height: 240px !important; /* Горизонтальная пропорция для планшетов */
+        height: 240px !important; /* Горизонтальная карточка */
     }
 
     .next-card__title {
         font-size: 28px !important;
+    }
+
+    .next-project-section {
+        padding: 16px 0 20px !important;
     }
 
     .footer {
@@ -1059,4 +1062,219 @@ img, video {
     }
 
     .hero__services {
-        font
+        font-size: 15px !important;
+        line-height: 1.25 !important;
+    }
+
+    .case-page > .hero,
+    .case-hero-utro,
+    .case-hero-coffee,
+    .case-hero-book,
+    .case-hero-most,
+    .case-hero-chips,
+    .case-hero-vano {
+        margin-top: 0 !important;
+        height: 300px !important;
+        min-height: unset !important;
+        background-color: transparent !important;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 40px;
+    }
+
+    .about__photo-wrap {
+        width: 100%;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    .about__photo {
+        width: 100%;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+
+    .about__heading {
+        font-size: 22px;
+        line-height: 26px;
+        min-height: 104px;
+        margin-bottom: 16px;
+    }
+
+    .typewriter__caret {
+        height: 22px;
+    }
+
+    .about__desc {
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    .works {
+        margin-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .works__section-title {
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+
+    .works__list {
+        gap: 28px;
+    }
+
+    .works__row-2col {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .work-card--full .work-card__img-wrap,
+    .work-card--half .work-card__img-wrap {
+        height: 220px;
+        margin-bottom: 8px;
+    }
+
+    .work-card__meta {
+        margin-bottom: 0;
+    }
+
+    .work-card__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .work-card__tag {
+        display: none !important;
+    }
+
+    .case-desc-section {
+        padding-top: 28px;
+        padding-bottom: 20px;
+    }
+
+    .case-desc-grid {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .case-desc-title {
+        width: 100%;
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    .case-text-right,
+    .case-desc-text {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    .case-gallery {
+        gap: 12px;
+        padding-bottom: 20px;
+    }
+
+    .case-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+        .case-media-box,
+        .case-media-box.full,
+        .case-grid-2 .case-media-box.half {
+            height: auto !important;
+            display: block;
+        }
+
+            .case-media-el,
+            .case-grid-2 .case-media-box.half .case-media-el {
+                height: auto !important;
+                object-fit: contain !important;
+            }
+
+            .case-media-box.book-cover-final {
+                height: auto !important;
+                padding: 10px 0;
+            }
+
+    .next-project-section {
+        padding: 16px 0 24px !important;
+    }
+
+    .next-project-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .next-project-heading {
+        font-size: 24px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .next-card {
+        width: 100% !important;
+    }
+
+    .next-card__img-wrap {
+        height: 220px !important;
+        margin-bottom: 6px !important;
+    }
+
+        .next-card__img,
+        .next-card__img-wrap video.case-media-el {
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+    .next-card__title {
+        font-size: 20px !important;
+        line-height: 24px !important;
+    }
+
+    .footer {
+        padding: 36px 0 !important;
+    }
+
+    .footer__inner {
+        min-height: auto;
+        gap: 20px !important;
+    }
+
+    .footer__heading {
+        font-size: 32px !important;
+        line-height: 36px !important;
+        letter-spacing: -1px;
+        margin-bottom: 0;
+    }
+
+    .footer__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px !important;
+    }
+
+    .footer__email {
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.2;
+        word-break: break-all;
+    }
+
+    .footer__socials {
+        gap: 24px;
+    }
+
+    .footer__social-link {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 4px 0;
+    }
+}
