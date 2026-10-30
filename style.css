@@ -1,6 +1,6 @@
 :root {
     --bg-main: #000000;
-    --bg-page: #0E0E0E;
+    --bg-page: #000000; /* Единый чисто черный фон на ПК и мобилках, чтобы макеты книг не выделялись */
     --accent: #267DFF;
     --text-white: #FFFFFF;
     --text-muted: #C0C0C0;
@@ -17,6 +17,7 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: var(--bg-main);
 }
 
 body {
@@ -59,11 +60,24 @@ img, video {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     height: 98px;
     background-color: var(--bg-main);
-    z-index: 100;
+    z-index: 9999; /* Максимальный приоритет, чтобы ничего не перекрывало шапку */
 }
+
+    /* Защита от просвечивания контента выше шапки при скролле в мобильных WebView */
+    .header::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-color: var(--bg-main);
+        pointer-events: none;
+    }
 
 .header__inner {
     height: 100%;
@@ -585,7 +599,7 @@ img, video {
 /* ================= BREAKPOINT: 1024px ================= */
 @media (max-width: 1199px) {
     body {
-        background-color: var(--bg-page);
+        background-color: var(--bg-main);
     }
 
     .container,
@@ -696,15 +710,25 @@ img, video {
 
 /* ================= BREAKPOINT: Планшеты и Мобильные (до 900px) ================= */
 @media (max-width: 900px) {
+    body {
+        background-color: var(--bg-main);
+        padding-top: 64px; /* Единый отступ под фиксированную шапку 64px */
+    }
+
     .container,
     .case-desc-section {
-        padding-left: 24px;
-        padding-right: 24px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 64px;
-        background-color: var(--bg-page);
+        background-color: var(--bg-main);
+        z-index: 9999;
     }
 
     .header__nav,
@@ -757,16 +781,16 @@ img, video {
         top: 0;
         left: 0;
         width: 100%;
-        background-color: var(--bg-page);
-        z-index: 250;
-        transform: translateY(-100%);
+        height: 100dvh;
+        background-color: var(--bg-main);
+        z-index: 10000;
+        transform: translateX(100%);
         transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        padding: 20px 24px 36px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 20px 16px 36px;
     }
 
         .mobile-menu.is-open {
-            transform: translateY(0);
+            transform: translateX(0);
         }
 
     .mobile-menu__top {
@@ -807,8 +831,9 @@ img, video {
 
     .mobile-menu__body {
         display: flex;
-        justify-content: space-between;
-        gap: 48px;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 32px;
     }
 
     .mobile-menu__nav {
@@ -819,7 +844,7 @@ img, video {
 
     .mobile-menu__link {
         font-weight: 500;
-        font-size: 16px;
+        font-size: 18px;
         color: var(--text-white);
     }
 
@@ -830,16 +855,11 @@ img, video {
         gap: 24px;
     }
 
-    /* Отодвигаем верхний экран кейсов под шапку 64px, чтобы картинки не обрезались */
-    .hero,
-    .case-hero-utro,
-    .case-hero-coffee,
-    .case-hero-book,
-    .case-hero-most,
-    .case-hero-chips,
-    .case-hero-vano {
-        margin-top: 64px !important;
+    /* 1. ГЛАВНЫЙ ЭКРАН (INDEX.HTML) — НА ВСЮ ВЫСОТУ ЭКРАНА */
+    main:not(.case-page) > .hero {
+        margin-top: 0 !important;
         height: calc(100svh - 64px) !important;
+        min-height: 460px !important;
     }
 
     .hero__content {
@@ -847,6 +867,31 @@ img, video {
         width: 100%;
     }
 
+    .hero__title {
+        font-size: clamp(24px, 7.5vw, 38px) !important;
+        white-space: nowrap !important;
+        margin-bottom: 12px !important;
+    }
+
+    .hero__services {
+        font-size: 15px !important;
+        line-height: 1.25 !important;
+    }
+
+    /* ШАПКИ ВНУТРИ КЕЙСОВ — АККУРАТНЫЕ ПО ВЫСОТЕ, ЧТОБЫ НЕ РАЗДУВАЛО ЛОГОТИПЫ */
+    .case-page > .hero,
+    .case-hero-utro,
+    .case-hero-coffee,
+    .case-hero-book,
+    .case-hero-most,
+    .case-hero-chips,
+    .case-hero-vano {
+        margin-top: 0 !important;
+        height: 300px !important;
+        min-height: unset !important;
+    }
+
+    /* 2. ФОТО ДИЗАЙНЕРА — ЦЕЛИКОМ БЕЗ ОБРЕЗКИ */
     .about {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -855,7 +900,14 @@ img, video {
 
     .about__photo-wrap {
         width: 100%;
-        height: 320px;
+        height: auto !important; /* Авто-высота, чтобы фото не резалось */
+        max-height: none !important;
+    }
+
+    .about__photo {
+        width: 100%;
+        height: auto !important;
+        object-fit: contain !important;
     }
 
     .about__heading {
@@ -874,6 +926,7 @@ img, video {
         line-height: 19px;
     }
 
+    /* КАРТОЧКИ РАБОТ НА ГЛАВНОЙ */
     .works {
         margin-top: 48px;
         padding-bottom: 48px;
@@ -909,24 +962,21 @@ img, video {
         line-height: 22px;
     }
 
+    /* Скрываем описание и теги справа на главной для мобилок */
+    .work-card__desc,
     .work-card__tag {
-        font-size: 13px;
-        line-height: 18px;
+        display: none !important;
     }
 
-    /* Скрываем описание карточек на мобилках */
-    .work-card__desc {
-        display: none;
-    }
-
+    /* 3 и 4. ГАЛЕРЕЯ КЕЙСОВ — БЕЗ ПУСТЫХ ДЫР И ЛИШНИХ ОТСТУПОВ */
     .case-desc-section {
-        padding-top: 32px;
-        padding-bottom: 24px;
+        padding-top: 28px;
+        padding-bottom: 20px;
     }
 
     .case-desc-grid {
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
     }
 
     .case-desc-title {
@@ -935,7 +985,6 @@ img, video {
         line-height: 32px;
     }
 
-    /* Выравниваем текст по левому краю на мобилках */
     .case-text-right,
     .case-desc-text {
         margin-left: 0 !important;
@@ -946,39 +995,43 @@ img, video {
     }
 
     .case-gallery {
-        gap: 20px;
-        padding-bottom: 48px;
+        gap: 12px; /* Плотное и аккуратное расстояние между книгами и фото */
+        padding-bottom: 40px;
+    }
+
+    .case-media-box,
+    .case-media-box.full,
+    .case-grid-2 .case-media-box.half {
+        height: auto !important; /* Убирает черные дыры и обрезку фото */
+    }
+
+    .case-media-el {
+        height: auto !important;
+        object-fit: contain !important;
     }
 
     .case-grid-2 {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 12px;
     }
-
-        .case-grid-2 .case-media-box.half {
-            height: 300px;
-        }
-
-            .case-grid-2 .case-media-box.half.case-text-box {
-                height: auto;
-            }
 
     .case-media-box.book-cover-final {
-        height: 340px !important;
+        height: auto !important;
+        padding: 10px 0;
     }
 
-    /* Блок следующего проекта на мобилках */
+    /* СЛЕДУЮЩИЙ ПРОЕКТ НА МОБИЛКАХ */
     .next-project-section {
-        padding: 28px 0 40px;
+        padding: 24px 0 36px;
     }
 
     .next-project-grid {
         grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        gap: 12px !important;
     }
 
     .next-project-heading {
-        font-size: 26px !important;
+        font-size: 24px !important;
         margin-bottom: 0 !important;
     }
 
@@ -991,13 +1044,20 @@ img, video {
         margin-bottom: 6px !important;
     }
 
+        .next-card__img,
+        .next-card__img-wrap video.case-media-el {
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
     .next-card__title {
         font-size: 20px !important;
         line-height: 24px !important;
     }
 
+    /* 6. ФУТЕР — КРУПНАЯ ПОЧТА И КНОПКИ СОЦСЕТЕЙ */
     .footer {
-        padding: 36px 0;
+        padding: 40px 0;
     }
 
     .footer__inner {
@@ -1006,8 +1066,8 @@ img, video {
     }
 
     .footer__heading {
-        font-size: 32px;
-        line-height: 36px;
+        font-size: 34px;
+        line-height: 38px;
         letter-spacing: -1.2px;
         margin-bottom: 0;
     }
@@ -1015,69 +1075,23 @@ img, video {
     .footer__bottom {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
+        gap: 20px;
     }
 
     .footer__email {
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.2;
+        word-break: break-all;
+    }
+
+    .footer__socials {
+        gap: 24px;
     }
 
     .footer__social-link {
-        font-size: 14px;
-        line-height: 20px;
-    }
-}
-
-
-@media (max-width: 900px) {
-    /* Скрываем правые теги с категориями и годами на главной для мобилок */
-    .work-card__tag {
-        display: none !important;
-    }
-}
-@media (max-width: 900px) {
-    /* Отменяем фиксированную высоту для половинок сетки на мобилках, чтобы фото не обрезались */
-    .case-grid-2 .case-media-box.half {
-        height: auto !important;
-    }
-}
-@media (max-width: 900px) {
-    /* Фиксируем адекватную высоту первого экрана кейса, чтобы логотип не гигантился */
-    .case-hero-utro,
-    .case-hero-coffee,
-    .case-hero-book,
-    .case-hero-most,
-    .case-hero-chips,
-    .case-hero-vano,
-    .hero {
-        height: 380px !important; /* Делаем аккуратный компактный баннер вместо 100vh */
-        min-height: unset !important;
-    }
-
-    /* Чтобы видео/картинка внутри не обрезались диким зумом */
-    .hero__video,
-    .case-hero-bg {
-        object-fit: cover !important;
-    }
-}
-@media (max-width: 900px) {
-    /* Фиксируем адекватную высоту главной hero-секции на мобилках */
-    .hero {
-        height: 380px !important;
-        min-height: unset !important;
-        margin-top: 64px !important; /* Отступаем под фиксированную шапку */
-    }
-
-    /* Уменьшаем размер главного заголовка на главной, чтобы он не обрезался по бокам */
-    .hero__title {
-        font-size: clamp(24px, 7vw, 36px) !important;
-        white-space: nowrap !important;
-        margin-bottom: 8px !important;
-    }
-
-    .hero__services {
-        font-size: 13px !important;
-        line-height: 1.3 !important;
+        font-size: 18px;
+        line-height: 24px;
+        padding: 4px 0;
     }
 }
