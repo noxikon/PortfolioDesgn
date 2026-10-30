@@ -1268,3 +1268,13 @@ img, video {
         padding: 4px 0;
     }
 }
+/* Уменьшаем отступы у текстовых блоков внутри галереи кейсов */
+.case-gallery .case-desc-text {
+    margin: -10px 0 0 0 !important;
+}
+
+@media (max-width: 900px) {
+    .case-gallery .case-desc-text {
+        margin: -6px 0 0 0 !important;
+    }
+}
