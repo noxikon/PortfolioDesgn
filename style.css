@@ -1,6 +1,6 @@
 :root {
     --bg-main: #000000;
-    --bg-page: #000000; /* Единый чисто черный фон на ПК и мобилках, чтобы макеты книг не выделялись */
+    --bg-page: #000000;
     --accent: #267DFF;
     --text-white: #FFFFFF;
     --text-muted: #C0C0C0;
@@ -64,10 +64,9 @@ img, video {
     width: 100%;
     height: 98px;
     background-color: var(--bg-main);
-    z-index: 9999; /* Максимальный приоритет, чтобы ничего не перекрывало шапку */
+    z-index: 9999;
 }
 
-    /* Защита от просвечивания контента выше шапки при скролле в мобильных WebView */
     .header::before {
         content: '';
         position: absolute;
@@ -186,7 +185,10 @@ img, video {
     background-position: center;
 }
 
-.hero__video {
+.hero__video,
+.case-hero-utro video,
+.case-hero-most video,
+.case-hero-chips video {
     position: absolute;
     top: 0;
     left: 0;
@@ -442,13 +444,14 @@ img, video {
 
 .case-media-box {
     width: 100%;
+    height: auto;
     overflow: hidden;
 }
 
 .case-media-el {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     display: block;
 }
 
@@ -457,12 +460,20 @@ img, video {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
     width: 100%;
+    align-items: stretch;
 }
 
     .case-grid-2 .case-media-box.half {
         width: 100%;
-        height: 720px;
+        height: auto;
+        display: flex;
     }
+
+        .case-grid-2 .case-media-box.half .case-media-el {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .case-grid-2 .case-media-box.half.case-text-box {
             height: auto;
@@ -485,15 +496,15 @@ img, video {
         max-height: 100%;
     }
 
-/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ЧЕТКАЯ СЕТКА ДЕСКТОП) ================= */
+/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП) ================= */
 .next-project-section {
     padding: 56px 0 80px;
 }
 
 .next-project-grid {
     display: grid;
-    grid-template-columns: 440px 1fr;
-    gap: 64px;
+    grid-template-columns: 440px 704px;
+    justify-content: space-between;
     align-items: start;
     width: 100%;
 }
@@ -510,22 +521,24 @@ img, video {
 
 .next-card {
     display: block;
-    width: 100%;
+    width: 704px;
+    max-width: 100%;
 }
 
 .next-card__img-wrap {
     width: 100%;
-    height: 422px;
+    height: 480px;
     background-color: var(--card-placeholder);
     overflow: hidden;
     margin-bottom: 6px !important;
 }
 
-.next-card__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .next-card__img,
+    .next-card__img-wrap video.case-media-el {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
 .next-card__title {
     display: block;
@@ -596,7 +609,7 @@ img, video {
         color: var(--text-white);
     }
 
-/* ================= BREAKPOINT: 1024px ================= */
+/* ================= BREAKPOINT: 1024px (Ноутбуки и крупные планшеты) ================= */
 @media (max-width: 1199px) {
     body {
         background-color: var(--bg-main);
@@ -668,11 +681,13 @@ img, video {
     }
 
     .case-grid-2 .case-media-box.half {
-        height: 480px;
+        height: auto;
     }
 
+    /* На разрешении 1024px фиксируем правую колонку под ширину .work-card--half (520px), чтобы карточка была как на Фото 2 */
     .next-project-grid {
-        grid-template-columns: 280px 1fr;
+        grid-template-columns: 280px 520px;
+        justify-content: space-between;
         gap: 32px;
     }
 
@@ -680,8 +695,12 @@ img, video {
         font-size: 40px;
     }
 
+    .next-card {
+        width: 520px;
+    }
+
     .next-card__img-wrap {
-        height: 300px;
+        height: 340px;
     }
 
     .footer {
@@ -708,17 +727,17 @@ img, video {
     }
 }
 
-/* ================= BREAKPOINT: Планшеты и Мобильные (до 900px) ================= */
+/* ================= BREAKPOINT: Планшеты 768x1024 (до 900px) ================= */
 @media (max-width: 900px) {
     body {
         background-color: var(--bg-main);
-        padding-top: 64px; /* Единый отступ под фиксированную шапку 64px */
+        padding-top: 64px;
     }
 
     .container,
     .case-desc-section {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 24px;
+        padding-right: 24px;
     }
 
     .header {
@@ -781,16 +800,16 @@ img, video {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100dvh;
         background-color: var(--bg-main);
         z-index: 10000;
-        transform: translateX(100%);
+        transform: translateY(-100%);
         transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        padding: 20px 16px 36px;
+        padding: 20px 24px 36px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
         .mobile-menu.is-open {
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
     .mobile-menu__top {
@@ -831,9 +850,8 @@ img, video {
 
     .mobile-menu__body {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 32px;
+        justify-content: space-between;
+        gap: 48px;
     }
 
     .mobile-menu__nav {
@@ -844,7 +862,7 @@ img, video {
 
     .mobile-menu__link {
         font-weight: 500;
-        font-size: 18px;
+        font-size: 16px;
         color: var(--text-white);
     }
 
@@ -855,16 +873,177 @@ img, video {
         gap: 24px;
     }
 
-    /* 1. ГЛАВНЫЙ ЭКРАН (INDEX.HTML) — НА ВСЮ ВЫСОТУ ЭКРАНА */
     main:not(.case-page) > .hero {
         margin-top: 0 !important;
         height: calc(100svh - 64px) !important;
-        min-height: 460px !important;
+    }
+
+    .case-page > .hero,
+    .case-hero-utro,
+    .case-hero-coffee,
+    .case-hero-book,
+    .case-hero-most,
+    .case-hero-chips,
+    .case-hero-vano {
+        margin-top: 0 !important;
+        height: 460px !important;
     }
 
     .hero__content {
         padding: 0 16px;
         width: 100%;
+    }
+
+    .about {
+        grid-template-columns: 230px 1fr;
+        gap: 28px;
+    }
+
+    .about__photo-wrap {
+        width: 230px;
+        height: auto;
+    }
+
+    .about__photo {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .about__heading {
+        font-size: 24px;
+        line-height: 28px;
+        min-height: 112px;
+    }
+
+    .about__desc {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .works {
+        margin-top: 64px;
+        padding-bottom: 64px;
+    }
+
+    .works__section-title {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .works__row-2col {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .work-card--full .work-card__img-wrap {
+        height: 400px;
+    }
+
+    .work-card--half .work-card__img-wrap {
+        height: 210px;
+    }
+
+    .work-card__title {
+        font-size: 22px;
+        line-height: 24px;
+    }
+
+    .work-card__desc {
+        display: none;
+    }
+
+    .case-desc-title {
+        width: 220px;
+        font-size: 32px;
+    }
+
+    .case-desc-text {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .case-gallery {
+        gap: 20px;
+        padding-bottom: 60px;
+    }
+
+    .case-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        align-items: stretch;
+    }
+
+        .case-grid-2 .case-media-box.half {
+            height: auto;
+        }
+
+    .next-project-grid {
+        grid-template-columns: 220px 320px;
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    .next-project-heading {
+        font-size: 32px;
+    }
+
+    .next-card {
+        width: 320px;
+    }
+
+    .next-card__img-wrap {
+        height: 320px;
+    }
+
+    .next-card__title {
+        font-size: 24px;
+    }
+
+    .footer__heading {
+        font-size: 38px;
+        line-height: 44px;
+        letter-spacing: -1.8px;
+    }
+
+    .footer__email {
+        font-size: 22px;
+    }
+}
+
+/* ================= BREAKPOINT: Смартфоны (до 640px) ================= */
+@media (max-width: 640px) {
+    .container,
+    .case-desc-section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .mobile-menu {
+        height: 100dvh;
+        padding: 20px 16px 36px;
+        transform: translateX(100%);
+        border-bottom: none;
+    }
+
+        .mobile-menu.is-open {
+            transform: translateX(0);
+        }
+
+    .mobile-menu__body {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 32px;
+    }
+
+    .mobile-menu__link {
+        font-size: 18px;
+    }
+
+    main:not(.case-page) > .hero {
+        margin-top: 0 !important;
+        height: calc(100svh - 64px) !important;
+        min-height: 460px !important;
     }
 
     .hero__title {
@@ -878,7 +1057,6 @@ img, video {
         line-height: 1.25 !important;
     }
 
-    /* ШАПКИ ВНУТРИ КЕЙСОВ — АККУРАТНЫЕ ПО ВЫСОТЕ, ЧТОБЫ НЕ РАЗДУВАЛО ЛОГОТИПЫ */
     .case-page > .hero,
     .case-hero-utro,
     .case-hero-coffee,
@@ -891,7 +1069,6 @@ img, video {
         min-height: unset !important;
     }
 
-    /* 2. ФОТО ДИЗАЙНЕРА — ЦЕЛИКОМ БЕЗ ОБРЕЗКИ */
     .about {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -900,7 +1077,7 @@ img, video {
 
     .about__photo-wrap {
         width: 100%;
-        height: auto !important; /* Авто-высота, чтобы фото не резалось */
+        height: auto !important;
         max-height: none !important;
     }
 
@@ -926,7 +1103,6 @@ img, video {
         line-height: 19px;
     }
 
-    /* КАРТОЧКИ РАБОТ НА ГЛАВНОЙ */
     .works {
         margin-top: 48px;
         padding-bottom: 48px;
@@ -962,13 +1138,10 @@ img, video {
         line-height: 22px;
     }
 
-    /* Скрываем описание и теги справа на главной для мобилок */
-    .work-card__desc,
     .work-card__tag {
         display: none !important;
     }
 
-    /* 3 и 4. ГАЛЕРЕЯ КЕЙСОВ — БЕЗ ПУСТЫХ ДЫР И ЛИШНИХ ОТСТУПОВ */
     .case-desc-section {
         padding-top: 28px;
         padding-bottom: 20px;
@@ -995,19 +1168,8 @@ img, video {
     }
 
     .case-gallery {
-        gap: 12px; /* Плотное и аккуратное расстояние между книгами и фото */
+        gap: 12px;
         padding-bottom: 40px;
-    }
-
-    .case-media-box,
-    .case-media-box.full,
-    .case-grid-2 .case-media-box.half {
-        height: auto !important; /* Убирает черные дыры и обрезку фото */
-    }
-
-    .case-media-el {
-        height: auto !important;
-        object-fit: contain !important;
     }
 
     .case-grid-2 {
@@ -1015,12 +1177,24 @@ img, video {
         gap: 12px;
     }
 
-    .case-media-box.book-cover-final {
-        height: auto !important;
-        padding: 10px 0;
-    }
+        .case-media-box,
+        .case-media-box.full,
+        .case-grid-2 .case-media-box.half {
+            height: auto !important;
+            display: block;
+        }
 
-    /* СЛЕДУЮЩИЙ ПРОЕКТ НА МОБИЛКАХ */
+            .case-media-el,
+            .case-grid-2 .case-media-box.half .case-media-el {
+                height: auto !important;
+                object-fit: contain !important;
+            }
+
+            .case-media-box.book-cover-final {
+                height: auto !important;
+                padding: 10px 0;
+            }
+
     .next-project-section {
         padding: 24px 0 36px;
     }
@@ -1055,7 +1229,6 @@ img, video {
         line-height: 24px !important;
     }
 
-    /* 6. ФУТЕР — КРУПНАЯ ПОЧТА И КНОПКИ СОЦСЕТЕЙ */
     .footer {
         padding: 40px 0;
     }
