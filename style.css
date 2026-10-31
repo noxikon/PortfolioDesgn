@@ -431,8 +431,15 @@ img, video {
     margin: 0;
 }
 
+/* Нормальный отступ для текстов в галерее, чтобы они не наезжали на картинки */
 .case-gallery .case-desc-text {
-    margin: -10px 0 0 0 !important;
+    margin: 30px 0 !important;
+}
+
+@media (max-width: 900px) {
+    .case-gallery .case-desc-text {
+        margin: 16px 0 !important;
+    }
 }
 
 .case-text-right {
@@ -501,15 +508,15 @@ img, video {
         max-height: 100%;
     }
 
-/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП) ================= */
+/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП: СТРОГО С ЦЕНТРА ЭКРАНА) ================= */
 .next-project-section {
     padding: 16px 0 24px;
 }
 
 .next-project-grid {
     display: grid;
-    grid-template-columns: 440px 704px;
-    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr); /* Левый край картинки начинается ровно с центра экрана */
+    gap: 28px;
     align-items: start;
     width: 100%;
 }
@@ -526,13 +533,13 @@ img, video {
 
 .next-card {
     display: block;
-    width: 704px;
+    width: 100%;
     max-width: 100%;
 }
 
 .next-card__img-wrap {
     width: 100%;
-    height: 422px; /* Широкая горизонтальная карточка */
+    height: 422px; /* Горизонтальная пропорция карточки */
     background-color: var(--card-placeholder);
     overflow: hidden;
     margin-bottom: 6px !important;
@@ -691,9 +698,8 @@ img, video {
     }
 
     .next-project-grid {
-        grid-template-columns: 280px 520px;
-        justify-content: space-between;
-        gap: 32px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
     }
 
     .next-project-heading {
@@ -701,7 +707,7 @@ img, video {
     }
 
     .next-card {
-        width: 520px;
+        width: 100%;
     }
 
     .next-card__img-wrap {
@@ -978,11 +984,9 @@ img, video {
             height: auto;
         }
 
-    /* Исправление сетки на планшетах 768x1024: блок Следующий проект в 2 колонки под горизонтальную карточку */
     .next-project-grid {
-        grid-template-columns: 240px 420px !important;
-        justify-content: space-between !important;
-        gap: 32px !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
     }
 
     .next-project-heading {
@@ -990,15 +994,15 @@ img, video {
     }
 
     .next-card {
-        width: 420px !important;
+        width: 100% !important;
     }
 
     .next-card__img-wrap {
-        height: 240px !important; /* Горизонтальная карточка */
+        height: 240px !important;
     }
 
     .next-card__title {
-        font-size: 28px !important;
+        font-size: 28px !important; /* Увеличено название проекта на планшете */
     }
 
     .next-project-section {
