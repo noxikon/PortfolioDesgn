@@ -431,15 +431,9 @@ img, video {
     margin: 0;
 }
 
-/* Нормальный отступ для текстов в галерее, чтобы они не наезжали на картинки */
+/* Безопасный отступ для текстов в галерее, предотвращающий наезд на фото */
 .case-gallery .case-desc-text {
-    margin: 30px 0 !important;
-}
-
-@media (max-width: 900px) {
-    .case-gallery .case-desc-text {
-        margin: 16px 0 !important;
-    }
+    margin: 24px 0 !important;
 }
 
 .case-text-right {
@@ -508,14 +502,14 @@ img, video {
         max-height: 100%;
     }
 
-/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП: СТРОГО С ЦЕНТРА ЭКРАНА) ================= */
+/* ================= СЛЕДУЮЩИЙ ПРОЕКТ (ДЕКТОП) ================= */
 .next-project-section {
     padding: 16px 0 24px;
 }
 
 .next-project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Левый край картинки начинается ровно с центра экрана */
+    grid-template-columns: repeat(2, 1fr);
     gap: 28px;
     align-items: start;
     width: 100%;
@@ -539,7 +533,7 @@ img, video {
 
 .next-card__img-wrap {
     width: 100%;
-    height: 422px; /* Горизонтальная пропорция карточки */
+    height: 422px;
     background-color: var(--card-placeholder);
     overflow: hidden;
     margin-bottom: 6px !important;
@@ -556,7 +550,7 @@ img, video {
     display: block;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 30px; /* Уменьшено на пару пунктов */
     line-height: 1.1;
     color: #FFFFFF;
     margin: 0 !important;
@@ -1002,7 +996,7 @@ img, video {
     }
 
     .next-card__title {
-        font-size: 28px !important; /* Увеличено название проекта на планшете */
+        font-size: 24px !important; /* Уменьшено на пару пунктов для планшетов */
     }
 
     .next-project-section {
@@ -1239,8 +1233,8 @@ img, video {
         }
 
     .next-card__title {
-        font-size: 20px !important;
-        line-height: 24px !important;
+        font-size: 18px !important; /* Уменьшено для мобильных */
+        line-height: 22px !important;
     }
 
     .footer {
